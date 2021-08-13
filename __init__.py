@@ -11,8 +11,8 @@ class App:
     def _create_widgets(self) -> None:
         win = self._master
         master_frame = Frame(win)
-        label_entry_produce = Label(
-            master_frame, text="Digite o valor do produto: "
+        self._product_value: DoubleVar = self._make_float_entry_with_label(
+            master_frame, "Digite o valor do produto:"
         )
         self._amount_received: DoubleVar = self._make_float_entry_with_label(
             master_frame, "Digite o valor recebido:"
