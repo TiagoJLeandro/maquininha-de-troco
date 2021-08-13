@@ -1,5 +1,5 @@
-from tkinter import Tk
-from tkinter.ttk import Label, Frame
+from tkinter import Tk, DoubleVar
+from tkinter.ttk import Label, Frame, Entry
 
 
 class App:
@@ -15,7 +15,10 @@ class App:
             master_frame, text="Digite o valor do produto: "
         )
 
-        master_frame.pack()
+    @staticmethod
+    def lenght_children(obj) -> int:
+        len_ = len(obj.winfo_children())
+        return len_
 
     def _init_master_config(self) -> None:
         self._master.title("Maquininha de Troco")
