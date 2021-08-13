@@ -14,6 +14,18 @@ class App:
         label_entry_produce = Label(
             master_frame, text="Digite o valor do produto: "
         )
+        self._amount_received: DoubleVar = self._make_float_entry_with_label(
+            master_frame, "Digite o valor recebido:"
+        )
+        master_frame.grid()
+        
+    def _make_float_entry_with_label(self, frame, label_text) -> DoubleVar:
+        entry_value = DoubleVar()
+        label = Label(frame, text=label_text)
+        entry = Entry(frame, width=7)
+        label.grid(row=self.lenght_children(frame), column=0, sticky="W")
+        entry.grid(row=self.lenght_children(frame), column=1, sticky="W")
+        return entry_value 
 
     @staticmethod
     def lenght_children(obj) -> int:
