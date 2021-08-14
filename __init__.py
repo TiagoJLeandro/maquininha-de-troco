@@ -56,7 +56,7 @@ class App:
     def _make_float_entry_with_label(self, frame, label_text) -> DoubleVar:
         entry_value = DoubleVar()
         label = Label(frame, text=label_text)
-        entry = Entry(frame, width=7)
+        entry = Entry(frame, width=7, textvariable=entry_value)
         label.grid(row=self._lenght_children(frame), column=0, sticky="W")
         entry.grid(row=self._lenght_children(frame), column=1, sticky="W")
         return entry_value 
