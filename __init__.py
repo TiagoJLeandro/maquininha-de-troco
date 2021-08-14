@@ -32,13 +32,13 @@ class App:
         [
             setattr(self,
                 f"_{num}",
-                self.make_labels(frame, f"0 x R$ {num:.2f}")
+                self._make_labels(frame, f"0 x R$ {num:.2f}")
             )
             for num in coins
         ]
-    
-    def make_labels(self, frame, text, col=3) -> Label:
-        len_= self.lenght_children(frame)
+
+    def _make_labels(self, frame, text, col=3) -> Label:
+        len_= self._lenght_children(frame)
         label = Label(frame, text=text)
         row = len_ // col
         column = len_ % col
@@ -49,12 +49,12 @@ class App:
         entry_value = DoubleVar()
         label = Label(frame, text=label_text)
         entry = Entry(frame, width=7)
-        label.grid(row=self.lenght_children(frame), column=0, sticky="W")
-        entry.grid(row=self.lenght_children(frame), column=1, sticky="W")
+        label.grid(row=self._lenght_children(frame), column=0, sticky="W")
+        entry.grid(row=self._lenght_children(frame), column=1, sticky="W")
         return entry_value 
 
     @staticmethod
-    def lenght_children(obj) -> int:
+    def _lenght_children(obj) -> int:
         len_ = len(obj.winfo_children())
         return len_
 
