@@ -18,8 +18,33 @@ class App:
         self._amount_received: DoubleVar = self._make_float_entry_with_label(
             master_frame, "Digite o valor recebido:"
         )
-        master_frame.grid()
-        
+        self._make_coins_labels()
+        master_frame.grid(sticky="W")
+        self.coins_frame.grid(column=0, sticky="W")
+    
+    def _make_coins_labels(self) -> None:
+        self.coins_list = [
+            200, 100, 50, 20, 10, 5, 
+            2, 1, 0.5, 0.25, 0.10, 0.05, 0.01
+        ]
+        coins = self.coins_list
+        frame = self.coins_frame
+        [
+            setattr(self,
+                f"_{num}",
+                self.make_labels(frame, f"0 x R$ {num:.2f}")
+            )
+            for num in coins
+        ]
+    
+    def make_labels(self, frame, text, col=3) -> Label:
+        len_= self.lenght_children(frame)
+        label = Label(frame, text=text)
+        row = len_ // col
+        column = len_ % col
+        label.grid(row=row, column=column, sticky="W")
+        return label
+
     def _make_float_entry_with_label(self, frame, label_text) -> DoubleVar:
         entry_value = DoubleVar()
         label = Label(frame, text=label_text)
