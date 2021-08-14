@@ -38,8 +38,8 @@ class App:
         self._master.resizable(width=False, height=False)
     
     def _set_geometry_to_master(self) -> None:
-        width = 300
-        height = 300
+        width = 400
+        height = 400
         x: int = self._get_center_x(width)
         y: int = self._get_center_y(height)
         self._master.geometry(f"{width}x{height}+{x}+{y}")
