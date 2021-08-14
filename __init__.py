@@ -1,4 +1,4 @@
-from tkinter import Tk, DoubleVar
+from tkinter import Tk, StringVar
 from tkinter.ttk import Label, Frame, Entry
 
 
@@ -12,10 +12,10 @@ class App:
         win = self._master
         master_frame = Frame(win)
         self.coins_frame = Frame(win)
-        self._product_value: DoubleVar = self._make_float_entry_with_label(
+        self._product_value: StringVar = self._make_float_entry_with_label(
             master_frame, "Digite o valor do produto:"
         )
-        self._amount_received: DoubleVar = self._make_float_entry_with_label(
+        self._amount_received: StringVar = self._make_float_entry_with_label(
             master_frame, "Digite o valor recebido:"
         )
         self._make_coins_labels()
@@ -53,8 +53,8 @@ class App:
         label.grid(row=row, column=column, sticky="W")
         return label
 
-    def _make_float_entry_with_label(self, frame, label_text) -> DoubleVar:
-        entry_value = DoubleVar()
+    def _make_float_entry_with_label(self, frame, label_text) -> StringVar:
+        entry_value = StringVar()
         label = Label(frame, text=label_text)
         entry = Entry(frame, width=7, textvariable=entry_value)
         label.grid(row=self._lenght_children(frame), column=0, sticky="W")
