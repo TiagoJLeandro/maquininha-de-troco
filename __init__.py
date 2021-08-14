@@ -26,6 +26,10 @@ class App:
         value: float = self._product_value.get()
         return value
 
+    def _get_amount_received(self) -> float:
+        value: float = self._amount_received.get()
+        return value
+
     def _make_coins_labels(self) -> None:
         self.coins_list = [
             200, 100, 50, 20, 10, 5, 
