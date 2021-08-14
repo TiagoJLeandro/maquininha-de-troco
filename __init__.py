@@ -22,6 +22,10 @@ class App:
         master_frame.grid(sticky="W")
         self.coins_frame.grid(column=0, sticky="W")
     
+    def _get_product_value(self) -> float:
+        value: float = self._product_value.get()
+        return value
+
     def _make_coins_labels(self) -> None:
         self.coins_list = [
             200, 100, 50, 20, 10, 5, 
