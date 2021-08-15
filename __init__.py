@@ -57,7 +57,7 @@ class App:
     def _add_style_in_the_children_frame(self, frame):
         for children in frame.winfo_children():
             is_label = True if "label" in str(children) else False
-            fg = self.default_fg_color if is_label else "#605F5E"
+            fg = self.default_fg_color if is_label else "#000000"
             style = {
                  "font": ("Arial", 12, "bold"),
                  "background": self.default_bg_color,
