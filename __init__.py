@@ -25,6 +25,19 @@ class App:
         master_frame.grid(sticky="W")
         self.coins_frame.grid(column=0, sticky="W")
     
+    def _thread_format_fields(self, event) -> None:
+        from threading import Thread
+        t = Thread(target=self._as_a_floating_value, kwargs={'event': event})
+        t.start()
+        
+    def _as_a_floating_value(self, event) -> None:
+        string_var_name: str = event.widget.winfo_name()
+        string_var: StringVar = getattr(self, string_var_name)
+        value: str = string_var.get()
+        value_without_spaces: str = value.strip()
+        value_like_float: str = string_as_a_float(value_without_spaces)
+        string_var.set(value_like_float)
+
     def _set_product_value(self, value: str) -> None:
         self._product_value.set(value)
     
