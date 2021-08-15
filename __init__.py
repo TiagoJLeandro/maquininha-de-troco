@@ -13,11 +13,13 @@ class App:
         win = self._master
         master_frame = Frame(win)
         self.coins_frame = Frame(win)
-        self._product_value: StringVar = self._make_float_entry_with_label(
-            master_frame, "Digite o valor do produto:"
+        self._product_value: StringVar = self._make_entry_with_label(
+            master_frame, "Digite o valor do produto:",
+            name="_product_value"
         )
-        self._amount_received: StringVar = self._make_float_entry_with_label(
-            master_frame, "Digite o valor recebido:"
+        self._amount_received: StringVar = self._make_entry_with_label(
+            master_frame, "Digite o valor recebido:",
+            name="_amount_received"
         )
         self._make_coins_labels()
         master_frame.grid(sticky="W")
@@ -60,13 +62,15 @@ class App:
         label.grid(row=row, column=column, sticky="W")
         return label
 
-    def _make_float_entry_with_label(self, frame, label_text) -> StringVar:
+    def _make_entry_with_label(self, frame, label_text,name) -> StringVar:
         entry_value = StringVar()
         label = Label(frame, text=label_text)
-        entry = Entry(frame, width=7, textvariable=entry_value)
+        entry = Entry(frame, width=9, textvariable=entry_value, name=name)
         label.grid(row=self._lenght_children(frame), column=0, sticky="W")
         entry.grid(row=self._lenght_children(frame), column=1, sticky="W")
-        return entry_value 
+        entry.bind("<Any-KeyPress>", self._thread_format_fields)
+        entry.bind("<KeyRelease>", self._thread_format_fields)
+        return entry_value
 
     @staticmethod
     def _lenght_children(obj) -> int:
@@ -75,10 +79,10 @@ class App:
 
     def _init_master_config(self) -> None:
         self._master.title("Maquininha de Troco")
-        self._set_geometry_to_master()
+        self._set_master_geometry()
         self._master.resizable(width=False, height=False)
     
-    def _set_geometry_to_master(self) -> None:
+    def _set_master_geometry(self) -> None:
         width = 400
         height = 400
         x: int = self._get_center_x(width)
