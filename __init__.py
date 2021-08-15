@@ -1,6 +1,6 @@
 from tkinter import Tk, StringVar
 from tkinter.ttk import Label, Frame, Entry
-from string_to_float import string_to_float
+from string_as_a_float import string_as_a_float
 
 
 class App:
