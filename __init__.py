@@ -1,5 +1,5 @@
 from tkinter import Tk, StringVar
-from tkinter.ttk import Label, Frame, Entry
+from tkinter.ttk import Label, Frame, Entry, Style
 from string_as_a_float import string_as_a_float
 
 
@@ -8,23 +8,61 @@ class App:
         self._master = Tk()
         self._init_master_config()
         self._create_widgets()
+        self._load_styles()
     
     def _create_widgets(self) -> None:
         win = self._master
-        master_frame = Frame(win)
-        self.coins_frame = Frame(win)
+        self._field_frame = Frame(win)
+        self._coins_frame = Frame(win)
         self._product_value: StringVar = self._make_entry_with_label(
-            master_frame, "Digite o valor do produto:",
+            self._field_frame, "Digite o valor do produto:",
             name="_product_value"
         )
         self._amount_received: StringVar = self._make_entry_with_label(
-            master_frame, "Digite o valor recebido:",
+            self._field_frame, "Digite o valor recebido:",
             name="_amount_received"
         )
         self._make_coins_labels()
-        master_frame.grid(sticky="W")
-        self.coins_frame.grid(column=0, sticky="W")
+        self._field_frame.grid(sticky="W")
+        self._coins_frame.grid(column=0, sticky="W")
     
+    def _load_styles(self) -> None:
+        self.default_bg_color = "#F3E9D2"
+        self.default_fg_color = "#000000"
+        self._master.configure(bg=self.default_bg_color)
+        s = Style().configure("TFrame",background=self.default_bg_color)
+        self._field_frame.configure(style="TFrame")
+        self._coins_frame.configure(style="TFrame")
+        self._field_frame.grid(padx=5, pady=5)
+        self._coins_frame.grid(padx=5, pady=5)
+        self._add_padding_in_the_children_frame(self._field_frame, 5, 1)
+        self._add_padding_in_the_children_frame(self._coins_frame, 5, 1)
+        self._add_style_in_the_children_frame(self._field_frame)
+        self._add_style_in_the_children_frame(self._coins_frame)
+
+    def _add_padding_in_the_children_frame(self, frame, padx, pady):
+        for children in frame.winfo_children():
+            children.grid(padx=padx, pady=pady)
+
+    def _add_style_in_the_children_frame(self, frame):
+        for children in frame.winfo_children():
+            is_label = True if "label" in str(children) else False
+            fg = self.default_fg_color if is_label else "#605F5E"
+            style = {
+                 "font": ("Arial", 12, "bold"),
+                 "background": self.default_bg_color,
+                 "foreground": fg
+            }
+            style2 = {
+                "font": ("Arial", 12, "bold"),
+                "background": "#000000",
+                "foreground": "#B497D6",
+                "width": "16",
+                "anchor": "center"
+            }
+            s = style2 if str(frame.winfo_name()) == "!frame2" else style
+            children.configure(**s)
+
     def _thread_format_fields(self, event) -> None:
         from threading import Thread
         t = Thread(target=self._as_a_floating_value, kwargs={'event': event})
@@ -58,7 +96,7 @@ class App:
             2, 1, 0.5, 0.25, 0.10, 0.05, 0.01
         ]
         coins = self.coins_list
-        frame = self.coins_frame
+        frame = self._coins_frame
         [
             setattr(self,
                 f"_{num}",
@@ -67,9 +105,9 @@ class App:
             for num in coins
         ]
 
-    def _make_labels(self, frame, text, col=3) -> Label:
+    def _make_labels(self, frame, text, col=2) -> Label:
         len_= self._lenght_children(frame)
-        label = Label(frame, text=text)
+        label = Label(frame, text=f"\n{text}\n")
         row = len_ // col
         column = len_ % col
         label.grid(row=row, column=column, sticky="W")
@@ -96,8 +134,8 @@ class App:
         self._master.resizable(width=False, height=False)
     
     def _set_master_geometry(self) -> None:
-        width = 400
-        height = 400
+        width = 330
+        height = 560
         x: int = self._get_center_x(width)
         y: int = self._get_center_y(height)
         self._master.geometry(f"{width}x{height}+{x}+{y}")
@@ -112,8 +150,8 @@ class App:
         win = self._master
         system_window_height: int = win.winfo_screenheight()
         y = system_window_height/2 - height/2
-        center_plus_30_percent_up = y - height * 0.3
-        return round(center_plus_30_percent_up)
+        center_plus_10_percent_up = y - height * 0.1
+        return round(center_plus_10_percent_up)
 
     def run_looping(self) -> None:
         self._master.mainloop()
