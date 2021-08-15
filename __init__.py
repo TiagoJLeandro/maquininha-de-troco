@@ -1,5 +1,6 @@
 from tkinter import Tk, StringVar
 from tkinter.ttk import Label, Frame, Entry
+from string_to_float import string_to_float
 
 
 class App:
@@ -22,12 +23,12 @@ class App:
         master_frame.grid(sticky="W")
         self.coins_frame.grid(column=0, sticky="W")
     
-    def _get_product_value(self) -> float:
-        value: float = self._product_value.get()
+    def _get_product_value(self) -> str:
+        value: str = self._product_value.get()
         return value
 
-    def _get_amount_received(self) -> float:
-        value: float = self._amount_received.get()
+    def _get_amount_received(self) -> str:
+        value: str = self._amount_received.get()
         return value
 
     def _make_coins_labels(self) -> None:
