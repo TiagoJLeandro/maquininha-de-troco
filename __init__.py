@@ -1,4 +1,4 @@
-from tkinter import Tk, StringVar
+from tkinter import Tk, StringVar, Button
 from tkinter.ttk import Label, Frame, Entry, Style
 from string_as_a_float import string_as_a_float
 
@@ -22,6 +22,8 @@ class App:
             self._field_frame, "Digite o valor recebido:",
             name="_amount_received"
         )
+        self._calculate_button = Button(self._field_frame, text="Calcular")
+        self._calculate_button.grid(sticky="W")
         self._make_coins_labels()
         self._field_frame.grid(sticky="W")
         self._coins_frame.grid(column=0, sticky="W")
