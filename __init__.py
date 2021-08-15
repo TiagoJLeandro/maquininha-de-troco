@@ -23,6 +23,12 @@ class App:
         master_frame.grid(sticky="W")
         self.coins_frame.grid(column=0, sticky="W")
     
+    def _set_product_value(self, value: str) -> None:
+        self._product_value.set(value)
+    
+    def _get_amount_received(self, value: str) -> None:
+        self._amount_received.set(value)
+
     def _get_product_value(self) -> str:
         value: str = self._product_value.get()
         return value
