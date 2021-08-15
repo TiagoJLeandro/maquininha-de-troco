@@ -41,6 +41,14 @@ class App:
         self._add_padding_in_the_children_frame(self._coins_frame, 5, 1)
         self._add_style_in_the_children_frame(self._field_frame)
         self._add_style_in_the_children_frame(self._coins_frame)
+        self._calculate_button.configure(
+            background="#19647E",
+            foreground="#F3E9D2",
+            activebackground="#731DD8",
+            activeforeground="#F3E9D2",
+            cursor="hand2"
+        )
+        self._calculate_button.grid(pady=4)
 
     def _add_padding_in_the_children_frame(self, frame, padx, pady):
         for children in frame.winfo_children():
