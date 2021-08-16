@@ -1,6 +1,8 @@
 from tkinter import Tk, StringVar, Button
+from tkinter.messagebox import showerror
 from tkinter.ttk import Label, Frame, Entry, Style
 from string_as_a_float import string_as_a_float
+from calculate_change import calculate_change
 
 
 class App:
@@ -23,6 +25,7 @@ class App:
             name="_amount_received"
         )
         self._calculate_button = Button(self._field_frame, text="Calcular")
+        self._calculate_button.bind("<Button>", self._set_coins_label_change)
         self._calculate_button.grid(sticky="W")
         self._make_coins_labels()
         self._field_frame.grid(sticky="W")
@@ -49,6 +52,20 @@ class App:
             cursor="hand2"
         )
         self._calculate_button.grid(pady=4)
+
+    def _set_coins_label_change(self, event) -> None:
+        prod_value = float(self._product_value.get() or 0)
+        received = float(self._amount_received.get() or 0)
+        coins_list: list = self.coins_list
+        result: list = calculate_change(coins_list, prod_value, received)
+        if not result:
+            showerror("Operação inválida.", "Valor recebido insuficiente.")
+            return
+        for index, coins in enumerate(coins_list):
+            label = getattr(self, f"_{coins}")
+            text = f"\n{result[index]} x R$ {coins:.2f}\n"
+            fg = "#F6A23C" if result[index] else "#B497D6"
+            label.configure(text=text, foreground=fg)
 
     def _add_padding_in_the_children_frame(self, frame, padx, pady):
         for children in frame.winfo_children():
@@ -167,5 +184,7 @@ class App:
         self._master.mainloop()
 
 
-app = App()
-app.run_looping()
+if __name__ == "__main__":
+    app = App()
+    app.run_looping()
+    
