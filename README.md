@@ -34,7 +34,7 @@ Fiz esse programinha inspirado no desafio <a href="https://www.urionlinejudge.co
   <h2>Instalação:</h2>
   <ol>
     <li>
-      <span>Para instalar, bastar clicar e Code e escolher entre baixar um arquivo.zip ou clonar o repositório.
+      <span>Para instalar, bastar clicar em Code e escolher entre baixar um arquivo.zip ou clonar o repositório.
       <br>
       <img src="https://user-images.githubusercontent.com/59299412/129510365-853a840b-dfe6-496f-9b2a-744eaff1ff75.png" height="150">
     </li>
