@@ -18,7 +18,7 @@ Fiz esse programinha inspirado no desafio <a href="https://www.urionlinejudge.co
   <h2>Como funciona:</h2>
   <ol>
     <li>
-      <span>Há duas entradas. A primeira para colocar o valor do produto e a segunda para o valor recebido:</span>
+      <span>Há duas entradas. A primeira é para colocar o valor do produto e a segunda para o valor recebido:</span>
       <br>
       <img src="https://user-images.githubusercontent.com/59299412/129509848-2c531334-eee8-4a9a-ade8-4ab3e650222e.png" height="350">
     </li>
