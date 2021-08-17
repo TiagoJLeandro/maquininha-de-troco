@@ -20,12 +20,12 @@ Fiz esse programinha inspirado no desafio <a href="https://www.urionlinejudge.co
     <li>
       <span>Há duas entradas. A primeira é para colocar o valor do produto e a segunda para o valor recebido:</span>
       <br>
-      <img src="https://user-images.githubusercontent.com/59299412/129509848-2c531334-eee8-4a9a-ade8-4ab3e650222e.png" height="350">
+      <img src="https://user-images.githubusercontent.com/59299412/129777493-7bc67fa3-9eaf-428e-b758-970a81730832.png" height="360">
     </li>
     <li>
       <span>Clique em calcular após preencher ambos os campos e terá o troco decomposto pelas notas e moedas que ficarão na cor laranja:</span>
       <br>
-      <img src="https://user-images.githubusercontent.com/59299412/129510154-2f2604a6-5cdb-4d26-b3c6-b466f914e16d.png" height="350">
+      <img src="https://user-images.githubusercontent.com/59299412/129777611-f14d3d7b-948c-4544-a8f9-296ee9ef06f3.png" height="360">
     </li>
   </ol>
 </section>
@@ -36,7 +36,7 @@ Fiz esse programinha inspirado no desafio <a href="https://www.urionlinejudge.co
     <li>
       <span>Para instalar, bastar clicar em Code e escolher entre baixar um arquivo.zip ou clonar o repositório.
       <br>
-      <img src="https://user-images.githubusercontent.com/59299412/129510365-853a840b-dfe6-496f-9b2a-744eaff1ff75.png" height="150">
+      <img src="https://user-images.githubusercontent.com/59299412/129777779-c150bd47-1a4c-4d5b-b091-c06b9d3c4f96.png" height="200">
     </li>
     <li>
       <span> E independente da opção escolhida, mas com os arquivos em sua marquina, basta procurar pelo arquivo app.py e executá-lo.
