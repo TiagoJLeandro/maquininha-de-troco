@@ -69,6 +69,15 @@ class App:
             fg = "#F6A23C" if result[index] else "#B497D6"
             label.configure(text=text, foreground=fg)
 
+        self._update_label_change(result)
+
+    def _update_label_change(self, result) -> None:
+        coins_list = self.coins_list
+        t = [r * coins_list[i] for i, r in enumerate(result)]
+        troco = f"{float(sum(t)):.2f}".replace('.', ',')
+        msg = f"Troco: R$ {troco}"
+        self._label_change.configure(text=msg)
+
     def _add_padding_in_the_children_frame(self, frame, padx, pady):
         for children in frame.winfo_children():
             children.grid(padx=padx, pady=pady)
