@@ -17,7 +17,7 @@ class App:
         self._field_frame = Frame(win)
         self._coins_frame = Frame(win)
         self._product_value: StringVar = self._make_entry_with_label(
-            self._field_frame, "Digite o valor do produto:",
+            self._field_frame, "Digite o valor do pedido:",
             name="_product_value"
         )
         self._amount_received: StringVar = self._make_entry_with_label(
