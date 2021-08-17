@@ -27,6 +27,8 @@ class App:
         self._calculate_button = Button(self._field_frame, text="Calcular")
         self._calculate_button.bind("<Button>", self._set_coins_label_change)
         self._calculate_button.grid(sticky="W")
+        self._label_change = Label(self._field_frame, text="Troco: R$ 0,0")
+        self._label_change.grid(sticky="E", column="0", row="5", columnspan="2")
         self._make_coins_labels()
         self._field_frame.grid(sticky="W")
         self._coins_frame.grid(column=0, sticky="W")
