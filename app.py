@@ -17,7 +17,7 @@ class App:
         self._field_frame = Frame(win)
         self._coins_frame = Frame(win)
         self._product_value: StringVar = self._make_entry_with_label(
-            self._field_frame, "Digite o valor do produto:",
+            self._field_frame, "Digite o valor do pedido:",
             name="_product_value"
         )
         self._amount_received: StringVar = self._make_entry_with_label(
@@ -27,6 +27,8 @@ class App:
         self._calculate_button = Button(self._field_frame, text="Calcular")
         self._calculate_button.bind("<Button>", self._set_coins_label_change)
         self._calculate_button.grid(sticky="W")
+        self._label_change = Label(self._field_frame, text="Troco: R$ 0,0")
+        self._label_change.grid(sticky="E", column="0", row="5", columnspan="2")
         self._make_coins_labels()
         self._field_frame.grid(sticky="W")
         self._coins_frame.grid(column=0, sticky="W")
@@ -66,6 +68,15 @@ class App:
             text = f"\n{result[index]} x R$ {coins:.2f}\n"
             fg = "#F6A23C" if result[index] else "#B497D6"
             label.configure(text=text, foreground=fg)
+
+        self._update_label_change(result)
+
+    def _update_label_change(self, result) -> None:
+        coins_list = self.coins_list
+        t = [r * coins_list[i] for i, r in enumerate(result)]
+        troco = f"{float(sum(t)):.2f}".replace('.', ',')
+        msg = f"Troco: R$ {troco}"
+        self._label_change.configure(text=msg)
 
     def _add_padding_in_the_children_frame(self, frame, padx, pady):
         for children in frame.winfo_children():
